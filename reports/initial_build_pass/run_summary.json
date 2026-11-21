@@ -1,0 +1,19 @@
+{
+  "analytical_events": 614,
+  "candidate_events": 654,
+  "companies_requested": 30,
+  "companies_with_prices": 30,
+  "data_kind": "LIVE",
+  "excluded_events": 274,
+  "failed_operations": 0,
+  "filings_discovered": 302816,
+  "included_large_move_events": 380,
+  "inference_status": "estimated_few_clusters",
+  "matched_controls": 258,
+  "price_quality_issues": 7,
+  "release_timing_verified": 0,
+  "status": "analysis_available",
+  "unmatched_events": 122,
+  "verified_candidates_in_research_sessions": 634,
+  "verified_events": 654
+}

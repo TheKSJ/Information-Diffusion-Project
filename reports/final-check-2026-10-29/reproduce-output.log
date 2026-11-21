@@ -1,0 +1,55 @@
+Step 1: Reproduce the cached study
+Computing screened pseudo-dates for AAPL
+Computing screened pseudo-dates for ABBV
+Computing screened pseudo-dates for BAC
+Computing screened pseudo-dates for BMY
+Computing screened pseudo-dates for C
+Computing screened pseudo-dates for CAT
+Computing screened pseudo-dates for COST
+Computing screened pseudo-dates for CSCO
+Computing screened pseudo-dates for DE
+Computing screened pseudo-dates for GS
+Computing screened pseudo-dates for HD
+Computing screened pseudo-dates for HON
+Computing screened pseudo-dates for INTC
+Computing screened pseudo-dates for JNJ
+Computing screened pseudo-dates for JPM
+Computing screened pseudo-dates for KO
+Computing screened pseudo-dates for LMT
+Computing screened pseudo-dates for MCD
+Computing screened pseudo-dates for MRK
+Computing screened pseudo-dates for MS
+Computing screened pseudo-dates for MSFT
+Computing screened pseudo-dates for NVDA
+Computing screened pseudo-dates for ORCL
+Computing screened pseudo-dates for PEP
+Computing screened pseudo-dates for PFE
+Computing screened pseudo-dates for UNH
+Computing screened pseudo-dates for UNP
+Computing screened pseudo-dates for UPS
+Computing screened pseudo-dates for WFC
+Computing screened pseudo-dates for WMT
+{
+  "files_compared": 36,
+  "identical": true,
+  "differences": {},
+  "run_summary": {
+    "status": "analysis_available",
+    "data_kind": "LIVE",
+    "companies_requested": 30,
+    "companies_with_prices": 30,
+    "filings_discovered": 302816,
+    "candidate_events": 654,
+    "verified_events": 654,
+    "analytical_events": 633,
+    "included_large_move_events": 390,
+    "excluded_events": 264,
+    "matched_controls": 260,
+    "unmatched_events": 130,
+    "price_quality_issues": 7,
+    "failed_operations": 0,
+    "release_timing_verified": 0,
+    "verified_candidates_in_research_sessions": 634,
+    "inference_status": "estimated"
+  }
+}

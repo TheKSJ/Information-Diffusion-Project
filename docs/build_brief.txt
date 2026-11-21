@@ -1,0 +1,763 @@
+# BUILD: Information Diffusion Event Study
+
+You are my senior quantitative research engineer, empirical-finance researcher, and technical auditor.
+
+Build a complete, reproducible Python research project from scratch called:
+
+**information-diffusion-event-study**
+
+This is a serious empirical finance project intended for a public technical portfolio. It must demonstrate research design, data engineering, statistical reasoning, reproducibility, automated testing, and honest reporting of failures.
+
+I am a B.Sc. Economics student building competence for quantitative finance, financial research, and technical/AI roles.
+
+I will be occupied with another task while you implement this. Work autonomously through the full build, run tests, correct issues, and return a complete handoff. Do not stop after scaffolding or create only a plan.
+
+**Important:** This is a NEW project. Do not assume an existing event-study implementation. Do not import code or concepts from my separate Indian lender-extraction project.
+
+Do not publish, deploy, push to GitHub, or generate my final authored research conclusions.
+
+---
+
+# 1. THE RESEARCH QUESTION
+
+**Title:** Information Diffusion in US Equity Markets: An Event Study of Earnings-Related SEC Filings, 2021–2025.
+
+**Question:** Following earnings-related Form 8-K Item 2.02 filings, do unusually large initial abnormal stock returns exhibit continuation or reversal over the following five trading sessions, relative to comparable large price movements without such filings?
+
+This is an empirical event study, NOT a general stock-price prediction or algorithmic trading project.
+
+The goal is to measure and evaluate the temporal pattern of market-adjusted information responses.
+
+Be extremely careful with attribution:
+
+- The EDGAR acceptance timestamp is not necessarily the first public earnings-announcement timestamp.
+- An earnings press release may precede the 8-K filing.
+- Daily prices cannot identify intraday information-diffusion speed.
+- A significant result does not establish a causal market inefficiency.
+- The study must consistently describe results as filing-timed reactions unless release timing is independently verified.
+
+Never call an 8-K a clean earnings-surprise event without evidence about the original release.
+
+# 2. FIXED RESEARCH DESIGN
+
+Use these predefined settings. Expose parameters in configuration, but do not silently change primary specifications based on observed results.
+
+Research-event window: January 1, 2021–December 31, 2025.
+
+Security universe: 30 US-listed companies, fixed before observing study results.
+
+Event type: Original SEC Form 8-K filings containing Item 2.02, "Results of Operations and Financial Condition."
+
+Exclude Form 8-K/A amendments from primary event discovery, recording them separately.
+
+Use daily price data.
+
+Estimation window: trading sessions [-120,-21] relative to event session 0, inclusive, providing 100 expected estimation observations.
+
+Observation window: [-5,+10].
+
+Primary post-event window: [+1,+5].
+
+Other windows are descriptive or prespecified robustness tests.
+
+Primary initial-response threshold: absolute day-zero market-model abnormal return of at least 2%.
+
+Do not reinterpret that threshold as an earnings surprise; it is a realized stock-price movement.
+
+Use these fixed 30 securities:
+
+Technology:
+AAPL, MSFT, NVDA, INTC, ORCL, CSCO
+
+Financials:
+JPM, BAC, GS, MS, WFC, C
+
+Consumer:
+WMT, COST, HD, MCD, KO, PEP
+
+Healthcare:
+JNJ, PFE, MRK, ABBV, UNH, BMY
+
+Industrials:
+CAT, DE, HON, UPS, LMT, UNP
+
+Store company, ticker, CIK, assigned sector, and mapping provenance in an editable CSV.
+
+Resolve and verify ticker-to-CIK mappings through SEC data.
+
+Validate historical security identity. Do not silently treat current ticker mappings as historically universal.
+
+This is a deliberately selected surviving-stock universe, not a random historical market sample. Record and disclose survivorship, size, and sector-selection limitations. Do not generalize findings to all US stocks.
+
+If any company cannot be reliably mapped or has insufficient data, preserve it in the universe and mark its exclusion. Do not replace it automatically.
+
+# 3. HYPOTHESES
+
+Define for each valid event:
+
+AR(0): day-zero abnormal return.
+
+CAR(+1,+5): sum of abnormal returns for sessions +1 through +5.
+
+signed_post_CAR = sign(AR(0)) × CAR(+1,+5).
+
+A positive signed_post_CAR represents continuation in the direction of the initial response.
+
+A negative signed_post_CAR represents reversal.
+
+Construct matched non-event large-move controls using the same definitions.
+
+**Primary null hypothesis H0:**
+
+The average signed_post_CAR for qualifying filing events is no greater than that of comparable matched non-filing large-move observations.
+
+**Primary alternative hypothesis H1:**
+
+The average signed_post_CAR for qualifying filing events is greater than that of comparable matched non-filing large-move observations.
+
+Primary estimand:
+
+Mean(event signed_post_CAR minus matched-control signed_post_CAR), expressed in percentage points.
+
+This is a one-sided continuation hypothesis.
+
+Also report two-sided confidence intervals and the corresponding two-sided statistical results.
+
+A statistically insignificant or negative difference is a valid finding.
+
+Do not redefine the hypothesis after observing outcomes.
+
+# 4. IMPLEMENTATION STACK
+
+Python 3.11 or 3.12.
+
+Prefer:
+
+- pandas, numpy
+- scipy
+- statsmodels
+- requests or httpx
+- yfinance
+- exchange_calendars
+- pyarrow
+- matplotlib
+- pytest
+
+Use a pyproject.toml, pinned/reproducible dependencies, and an installable src-layout package.
+
+Use standard-library zoneinfo with America/New_York.
+
+Use CSV or Parquet for analytical datasets and JSON for manifests.
+
+No paid APIs, proprietary datasets, unnecessary database servers, ML models, LLM sentiment classifiers, web dashboard, frontend, cloud deployment, or trading engine.
+
+Avoid complexity that does not improve empirical validity.
+
+# 5. DATA SOURCES
+
+## SEC EDGAR
+
+Use the official SEC submissions API:
+
+https://data.sec.gov/submissions/CIK##########.json
+
+Correctly follow historical pagination through the additional filing files referenced in submissions metadata.
+
+Construct filing index and source-document URLs using the actual CIK and accession number.
+
+Preserve:
+
+- Source company name
+- Ticker and CIK
+- SEC accession number
+- Form
+- SEC item codes
+- Filing date
+- Report date
+- Raw acceptance timestamp
+- Verified acceptance timestamp
+- Source URL
+- Primary document URL
+- Retrieval timestamp
+- Data-source version or SHA-256 hash where applicable
+
+SEC JSON uses parallel arrays. Reconstruct records by matching array indices correctly. Never sort or filter one array independently.
+
+Parse Item 2.02 using exact item tokens, not unreliable substring matching.
+
+If an item's metadata is absent, verify from filing evidence where practical or mark the event unresolved. Do not classify missing item metadata as definitely non-2.02.
+
+Respect SEC fair-access requirements:
+
+- Require a real configurable SEC_USER_AGENT containing a project identifier and actual contact details.
+- Never fabricate a user email.
+- Use a conservative global request rate of no more than 2 requests/second by default.
+- Implement caching, retries, exponential backoff, and appropriate handling of HTTP 403/429/5xx.
+- Never bypass access controls or rotate identities to evade blocks.
+
+## Critical timestamp problem
+
+Do NOT assume SEC submissions JSON acceptanceDateTime is consistently reliable UTC simply because it contains a Z suffix.
+
+There are documented discrepancies between submissions timestamps and filing-index acceptance times.
+
+For every primary candidate event:
+
+1. Preserve the raw API timestamp unchanged.
+2. Retrieve the SEC filing index acceptance time, or an authoritative acceptance timestamp from the complete submission header.
+3. Interpret authoritative SEC local acceptance times using the appropriate US Eastern calendar convention, with daylight-saving rules.
+4. Compare both timestamps and record the discrepancy.
+5. Use the verified authoritative time for event-session alignment.
+6. Exclude events from the primary study when acceptance timing cannot be established reliably.
+7. Preserve all rejected candidates and explain the reason.
+
+Never apply one universal four-hour or five-hour correction to every record.
+
+Implement explicit timestamp discrepancy tests, including cases where the discrepancy changes the designated trading day.
+
+Also document that EDGAR acceptance is distinct from the first public dissemination of the attached earnings information.
+
+## Historical stock prices
+
+Use yfinance with explicit price-adjustment settings. Do not rely on library defaults.
+
+Fetch daily historical prices for all universe members and SPY, using dividend/split-adjusted closing prices with clearly defined return conventions.
+
+For example, explicitly request auto_adjust=False and use Adj Close, validating that the expected field exists. A different consistent convention is acceptable only if documented, tested, and equivalent for the intended return calculation.
+
+Do not silently substitute unadjusted Close for missing adjusted data.
+
+Record downloads, intervals, missing sessions, corporate actions when available, and data validation results.
+
+Use SPY as the market proxy, acknowledging that SPY is not the complete market portfolio.
+
+Fetch sufficient extra dates before and after 2021–2025 to support estimation and forward-event windows. Suggested initial price coverage: June 2020 through February 2026.
+
+Historical data availability determines the actual usable sample.
+
+No forward-fill of unavailable prices across trading sessions. Do not create zero returns for missing prices.
+
+Inspect obvious split-related jumps, invalid prices, duplicates, and unusually extreme observations without automatically suppressing legitimate market movements.
+
+Cache raw inputs. Pin the downloaded data snapshot used for results locally, with hashes and retrieval timestamps.
+
+Include a data-rights note: review Yahoo's licensing and personal-use restrictions before publishing or redistributing raw price datasets. Publication should generally use independently produced analysis and links, not redistributed vendor data.
+
+# 6. EVENT DISCOVERY AND QUALITY
+
+Implement:
+
+SEC filing retrieval → Item 2.02 filtering → metadata verification → timestamp verification → event-session alignment → validation.
+
+Each event must have a stable unique ID based on CIK and accession number.
+
+Deduplicate accession numbers.
+
+If multiple qualifying filings fall on the same ticker-session, retain every source filing in the raw event ledger but use one flagged ticker-session observation in the main analytical sample.
+
+Maintain independent files for:
+
+- All discovered filings
+- Candidate Item 2.02 events
+- Verified events
+- Included analytical events
+- Excluded or unresolved events
+
+Never delete observations to make the accuracy or sample coverage appear better.
+
+Record a complete exclusion waterfall with mutually exclusive primary reasons and additional secondary quality flags.
+
+Capture other disclosed 8-K items within the same filing, because earnings announcements may also contain guidance, dividends, or other news.
+
+For a reproducible, deterministic audit subset of at least 20 candidate filings if available, inspect the filing and associated earnings exhibit/press release.
+
+Record whether the earnings-release date or timestamp could be independently established, whether it may precede filing acceptance, and the evidence URL.
+
+Do not invent announcement times from press-release dates alone.
+
+Produce a clean-timing sensitivity sample only if sufficient verification exists. If not, explicitly say it was unavailable.
+
+# 7. EVENT-DAY ALIGNMENT
+
+Use America/New_York and a validated NYSE trading calendar, accounting for holidays, weekends, daylight-saving time, and early-close sessions.
+
+For a verified filing:
+
+Before regular-market opening: event day 0 is the same trading session.
+
+During the regular trading session: day 0 is that session; flag that daily close-to-close returns also include pre-filing trading activity.
+
+At or after actual market close: day 0 is the next trading session.
+
+On weekends or market holidays: day 0 is the next trading session.
+
+Use actual exchange-session opening/closing times, not a universally hardcoded 09:30–16:00 schedule.
+
+Use trading-session offsets for windows, never calendar-day offsets.
+
+Carry forward the verified timestamp source, session classification, and aligned event day in the dataset.
+
+Explicitly test Friday after-close filings, DST changes, Thanksgiving and other holidays, early-close days, intraday filings, and mismatched SEC timestamps.
+
+Use the first regular-session close after the event as the end of day-zero return measurement, without claiming to identify intraday price effects.
+
+# 8. EXPECTED-RETURN MODEL
+
+Compute daily simple adjusted returns:
+
+R(i,t) = P(i,t) / P(i,t-1) - 1.
+
+Estimate, for every event, the market model using only sessions [-120,-21]:
+
+R(i,t) = alpha(i) + beta(i) × R(SPY,t) + epsilon(i,t).
+
+Use OLS on paired valid company/SPY observations.
+
+Require 100 complete paired observations for the primary clean sample. Otherwise exclude with an exact coverage reason. Report how much sample is lost because of this requirement.
+
+Do not fit or refit the model using event-period or post-event returns.
+
+Expected return:
+
+E[R(i,t)] = alpha(i) + beta(i) × R(SPY,t).
+
+Abnormal return:
+
+AR(i,t) = R(i,t) - E[R(i,t)].
+
+Cumulative abnormal return:
+
+CAR(i,a,b) = sum of AR(i,t), for t from a through b.
+
+These are additive CARs, not compounded buy-and-hold returns.
+
+Calculate and store:
+
+- alpha and beta
+- Model R-squared
+- Residual standard deviation
+- AR for every event-window session
+- CAR[-5,-1]
+- AR[0]
+- CAR[0,+1]
+- CAR[-1,+1]
+- CAR[+1,+5]
+- CAR[+1,+10]
+- signed_post_CAR[+1,+5]
+
+Use decimal returns internally and label percentage versus percentage-point results clearly.
+
+Do not confuse signed CAR with standardized CAR. Use unambiguous variable names.
+
+# 9. MATCHED NON-EVENT CONTROLS
+
+This is mandatory. Testing only whether average signed CAR differs from zero is not sufficient as the primary test.
+
+Construct a separate collection of non-event pseudo-dates using the same stocks and trading calendar.
+
+For each candidate pseudo-date:
+
+- Calculate AR[0] using a market model estimated strictly before that pseudo-date.
+- Require the same 100-observation estimation window.
+- Require absolute AR[0] >= 2%.
+- Calculate signed_post_CAR[+1,+5] identically.
+
+Exclude pseudo-dates overlapping the issuer's qualifying Item 2.02 event windows.
+
+Also screen for other important issuer SEC filings nearby, such as 8-K, 10-Q, and 10-K. Preserve screening outcomes and acknowledge that SEC screening cannot eliminate every news event.
+
+Use a deterministic matched-control procedure prioritizing:
+
+1. Same issuer
+2. Same calendar year, then nearest period if necessary within the research window
+3. Same initial AR sign
+4. Closest absolute AR[0] magnitude
+5. Similar pre-event volatility where available
+
+Match without replacement within an appropriate grouping when feasible. Document exact fallback logic.
+
+Do not loosen constraints silently to force every filing event to receive a control.
+
+Report matched, unmatched, and excluded counts.
+
+Keep unmatched qualifying filing events for the descriptive event analysis, but exclude them from the paired primary estimator.
+
+Because event and control selection condition on day-zero realized returns, explicitly classify this as a retrospective conditional event study, not a rule implementable before the price move.
+
+# 10. PRIMARY STATISTICAL TEST
+
+For each properly matched pair:
+
+D(i) = signed_post_CAR_event(i) - signed_post_CAR_control(i).
+
+Primary estimate: mean D.
+
+Test H0 against H1 using a one-sided test with dependence-aware inference.
+
+Do not treat hundreds of quarterly observations from the same companies as independent.
+
+At minimum implement:
+
+- Point estimate in percentage points
+- Issuer-clustered inference or issuer-cluster bootstrap
+- Two-sided 95% confidence interval
+- Appropriate one-sided p-value
+- Number of observations
+- Number of unique issuers
+- Number of independent calendar periods represented
+
+Use deterministic seeds and document bootstrap methodology. A suggested initial bootstrap size is 5,000 draws.
+
+Address the risk of earnings announcements clustering in calendar time. Include a calendar-quarter clustering or block-based sensitivity, or another defensible cross-sectional-dependence check.
+
+If standard errors or confidence intervals are unreliable because the sample is small or heavily clustered, state this explicitly.
+
+Ordinary iid t-tests may be included as diagnostics, but must not be used as the sole evidence of statistical significance.
+
+Do not produce p-values from formulas that do not match the stated test.
+
+# 11. SECONDARY ANALYSES
+
+Implement these as clearly secondary, not opportunities to redefine success:
+
+- Mean AR[0]
+- AAR over event time [-5,+10]
+- CAAR trajectory over [-5,+10]
+- Positive versus negative initial reactions
+- Filing timing: before open, intraday, after close
+- Sector descriptive comparisons
+- Pre-event CAR[-5,-1] diagnostic
+- Post-event CAR[+1,+10]
+- Alternative simple market-adjusted model: AR = R(stock) - R(SPY)
+- Alternative initial-response thresholds of 1.5% and 2.5%
+- An analysis restricted to non-overlapping, single-item or less-confounded filings when possible
+- A timing-verified release subset if available
+
+Do not add dozens of unexplained hypothesis tests.
+
+Identify which results are descriptive, exploratory, or robustness checks. If multiple secondary p-values are calculated, label the multiple-comparison risk and apply an appropriate correction where comparisons are treated as confirmatory.
+
+# 12. CONFOUNDERS AND BIAS
+
+Implement explicit controls, audits, or limitations for:
+
+1. Earlier public earnings releases preceding the filing
+2. SEC acceptance timestamp inconsistencies
+3. After-hours versus before-market information arrival
+4. Concurrent guidance, buybacks, dividends, and other corporate disclosures
+5. Earnings clustering across companies
+6. Repeated events from the same issuer
+7. Overlapping event windows
+8. Missing or bad adjusted-price data
+9. Survivorship and non-random universe selection
+10. Market-model estimation errors
+11. Model instability and event-induced volatility
+12. Dependence among securities during macroeconomic shocks
+13. Sample-selection bias introduced by the 2% day-zero threshold
+14. Multiple testing and specification searching
+15. Vendor data changes across download dates
+
+Give each flagged issue its own machine-readable indicator where practical.
+
+Exclude events from the clean main sample only according to predetermined rules. Preserve other uncertainty as visible quality flags.
+
+Never invent causes for unusual returns.
+
+# 13. REPOSITORY ARCHITECTURE
+
+Create a clean repository with a structure similar to:
+
+information-diffusion-event-study/
+- pyproject.toml
+- README.md
+- .gitignore
+- .env.example
+- configs/study.yaml
+- configs/universe.csv
+- src/eventstudy/
+  - __init__.py
+  - cli.py
+  - sec_client.py
+  - prices.py
+  - calendar.py
+  - events.py
+  - validation.py
+  - market_model.py
+  - controls.py
+  - inference.py
+  - robustness.py
+  - reporting.py
+- tests/
+- tests/fixtures/
+- data/raw/
+- data/interim/
+- data/processed/
+- reports/
+- docs/
+  - research_design.md
+  - methodology.md
+  - data_dictionary.md
+  - limitations.md
+
+You may modify this structure where technically justified, but retain a clear separation between collection, validation, statistics, and reporting.
+
+No hardcoded user secrets, arbitrary local file paths, or unneeded dependencies.
+
+Keep large raw/vendor datasets out of Git by default.
+
+# 14. COMMAND-LINE WORKFLOW
+
+Provide clear, executable commands equivalent to:
+
+pip install -e ".[dev]"
+
+python -m eventstudy validate --config configs/study.yaml
+
+python -m eventstudy fetch --config configs/study.yaml
+
+python -m eventstudy run --config configs/study.yaml
+
+python -m eventstudy report --config configs/study.yaml
+
+python -m eventstudy demo --offline
+
+pytest -q
+
+Implement a clear top-level help command.
+
+The normal pipeline should be resumable, deterministic where inputs are fixed, and should not redownload correctly cached sources unnecessarily.
+
+Provide useful progress and error messages.
+
+The offline demo must run without network access.
+
+Clearly label synthetic test fixtures. Never present synthetic-fixture outputs as real empirical findings.
+
+# 15. OUTPUTS
+
+The completed pipeline should generate, where valid live data exist:
+
+**Structured data**
+- Full candidate event ledger
+- Verified timestamp ledger
+- Included/excluded event ledger
+- Adjusted price/return dataset
+- Event-level abnormal returns
+- Matched non-event controls
+- Event-level CAR calculations
+- Main inferential results
+- Robustness results
+
+**Quality and provenance**
+- Data-source manifest
+- Retrieval dates
+- Hashes of input snapshots
+- Complete exclusion waterfall
+- Coverage by issuer and year
+- Timestamp discrepancy report
+- Filing-versus-release timing audit
+- Missing-price and failed-download report
+- Dataset schema/data dictionary
+
+**Figures**
+- Mean abnormal return by event day
+- Cumulative average abnormal-return trajectory
+- Continuation-versus-reversal results with confidence intervals
+- Filing-event versus matched-control comparison
+- Data quality and sample-coverage overview
+
+Figures must accurately reflect underlying data, with sample sizes, axes, return units, and uncertainty where appropriate.
+
+Do not smooth curves in a way that changes the empirical observations.
+
+**Research documentation**
+- Reproducible methods description
+- Primary hypothesis and precommitted specification
+- Results table generated from actual outputs
+- Sensitivity-test results
+- Limitations
+- Exact reproduction instructions
+
+Generated reports are technical evidence for my review, not final published research prose.
+
+# 16. TESTING REQUIREMENTS
+
+Use deterministic automated tests.
+
+Mandatory tests:
+
+**SEC ingestion**
+- Parallel-array reconstruction
+- Historical filings pagination
+- Missing item codes
+- Exact Item 2.02 filtering
+- 8-K/A exclusion
+- Duplicate accession handling
+- Source URL creation
+- HTTP failure and retry behavior
+
+**Event timing**
+- Before-open filing
+- Intraday filing
+- After-close filing
+- Friday after-close filing
+- Weekend/holiday filing
+- Early-market closure
+- DST boundary
+- UTC/Eastern misinterpretation
+- Submissions timestamp versus filing-index discrepancy
+- Event-day alignment with missing price records
+
+**Financial calculations**
+- Adjusted-price return calculation
+- Market-model alpha/beta recovery using known synthetic coefficients
+- Estimation-window boundaries
+- No future-data inclusion
+- AR and CAR arithmetic
+- Correct sign-adjusted CAR
+- Correct exclusion of day 0 from the post-event drift measure
+- Missing-price rejection
+- Zero/invalid-price rejection
+
+**Statistical inference**
+- Matched-control determinism
+- No duplicate control reuse where prohibited
+- Correct matching of event/control return windows
+- Zero-drift null simulations
+- Positive continuation simulations
+- Negative/reversal simulations
+- Cluster inference reproducibility
+- Confidence interval and p-value consistency
+- Too-small-sample behavior
+- No fabricated fallback data
+
+**Integration**
+- Fully offline end-to-end demo
+- Repeated-run identical outputs
+- Empty dataset behavior
+- Partial network failure behavior
+- Correct CLI return codes
+- Valid output schema
+
+Test the system against edge cases that could silently create a convincing but false empirical result.
+
+Do not merely write tests. Execute them.
+
+# 17. BUILD SEQUENCE
+
+Carry out the work in dependency order.
+
+**Stage A — Research design lock**
+
+Write the research-design document and fixed config before computing empirical results. The document must specify hypotheses, formulas, sample inclusion, controls, and inference.
+
+**Stage B — Real-source preflight**
+
+Use a three-company pilot (for example AAPL, JPM, and CAT) to validate SEC retrieval, an actual Item 2.02 filing, timestamp verification, price access, and calendar alignment.
+
+Verify that the live APIs and response formats work before scaling.
+
+If SEC requests require a user-agent value that has not been provided, implement all offline portions, indicate the missing configuration, and do not fabricate identity information.
+
+If live network access is unavailable, distinguish network restrictions from implementation errors.
+
+**Stage C — Implement extraction and validation**
+
+Build the full event-discovery and price-ingestion modules, preserve raw records, and validate actual retrieval responses.
+
+**Stage D — Implement quantitative calculations**
+
+Build the estimation-window calculations, event windows, market model, abnormal returns, matched controls, and statistical inference.
+
+**Stage E — Full 30-company historical run**
+
+Attempt a complete 2021–2025 extraction and analysis using genuine source data.
+
+Do not automatically shrink the requested universe or replace it without reporting the change as a deviation.
+
+If the full run fails, preserve partial outputs and exact failure reasons.
+
+**Stage F — Audit and fix**
+
+Run all tests and the reproducibility demo.
+
+Inspect intermediate observations and manually verify at least a small set of:
+
+- SEC filings and timestamps
+- Trading-day alignments
+- Raw versus adjusted price returns
+- Alpha/beta estimates
+- AR and CAR calculations
+- Matched control assignments
+
+Include at least three worked numerical verification cases.
+
+**Stage G — Handoff**
+
+Prepare the final results and clearly identify what was verified, what was only tested with fixtures, and what remains unverified.
+
+Continue automatically through these stages where the environment permits. Do not stop after the pilot if the full run is feasible.
+
+# 18. REPRODUCIBILITY AND INTEGRITY
+
+Use fixed random seeds.
+
+Document Python and package versions.
+
+Save every important configuration and downloaded-input manifest.
+
+Provide an executable reproduction path from cached source inputs to results.
+
+Never silently discard source observations, override errors, or create synthetic substitutes for missing real events.
+
+If a statistical hypothesis cannot be tested because there are too few valid events, mark it as underpowered or untestable.
+
+If results change after a bug fix, retain a change log explaining the change.
+
+If an implementation requires choosing an unspecified detail, select the simplest academically defensible solution, document the decision, and continue without changing the main hypothesis.
+
+Do not overengineer.
+
+# 19. WHAT NOT TO BUILD
+
+Do not build:
+
+- Stock-price prediction models
+- Machine-learning models
+- Automated trading strategies
+- Live brokerage integrations
+- Options-pricing systems
+- Sentiment-analysis pipelines
+- Intraday diffusion claims from daily data
+- Web apps or dashboards
+- Paid-data integrations
+- Extra research projects
+- AI-generated final publication claims
+
+Do not present statistical significance as proof of a profitable trading strategy.
+
+Do not claim causality from correlation.
+
+Do not present filing acceptance as proof of the first public release time.
+
+# 20. FINAL COMPLETION REPORT
+
+When finished, provide these sections:
+
+1. **Build status:** Complete, partial, or blocked, with precise distinctions.
+2. **Implementation:** Modules and functionality actually implemented.
+3. **Actual data:** Number of companies, filings discovered, qualifying events, verified events, included events, excluded events, and matched controls.
+4. **Research output:** Primary estimate, confidence interval, p-value, interpretation, and limitations, only if real analysis ran successfully.
+5. **Validation:** Tests executed, pass/fail counts, manual reconciliation results.
+6. **Data issues:** SEC timestamp discrepancies, source failures, release-timing uncertainty, missing prices, and unresolved residual problems.
+7. **Repository:** File tree and important implementation choices.
+8. **Commands:** Exact setup, test, offline-demo, and live-run commands.
+9. **Reproducibility:** Source snapshots, manifests, hashes, random seeds, environment details.
+10. **Known limitations:** Prioritized by potential effect on the validity of findings.
+11. **My next review:** The three most important things I must personally inspect and understand before publishing.
+
+For the final report, use actual tool/test outputs, not expected or hypothetical success metrics.
+
+Do not push, deploy, or publish anything. Leave the project locally ready for my audit.
+
+**Start implementing now.**

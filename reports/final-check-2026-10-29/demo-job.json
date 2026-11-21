@@ -1,0 +1,11 @@
+{
+  "id": "20261029T121711-5bfb6c",
+  "action": "demo",
+  "title": "Run the offline demonstration",
+  "detail": "Run an isolated end-to-end study using labelled synthetic fixtures.",
+  "status": "passed",
+  "started_at": "2026-10-29T12:17:11.827073+00:00",
+  "finished_at": "2026-10-29T12:18:54.325356+00:00",
+  "exit_code": 0,
+  "tests": null
+}

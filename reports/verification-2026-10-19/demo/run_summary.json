@@ -1,0 +1,19 @@
+{
+  "analytical_events": 60,
+  "candidate_events": 60,
+  "companies_requested": 6,
+  "companies_with_prices": 6,
+  "data_kind": "SYNTHETIC",
+  "excluded_events": 0,
+  "failed_operations": 0,
+  "filings_discovered": 60,
+  "included_large_move_events": 60,
+  "inference_status": "estimated_few_clusters",
+  "matched_controls": 60,
+  "price_quality_issues": 0,
+  "release_timing_verified": 0,
+  "status": "analysis_available",
+  "unmatched_events": 0,
+  "verified_candidates_in_research_sessions": 60,
+  "verified_events": 60
+}

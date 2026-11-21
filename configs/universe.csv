@@ -1,0 +1,32 @@
+ticker,company,cik,sector,mapping_provenance,historical_identity_status
+AAPL,Apple Inc.,320193,Technology,seed_pending_SEC_verification,unverified
+MSFT,Microsoft Corporation,789019,Technology,seed_pending_SEC_verification,unverified
+NVDA,NVIDIA Corporation,1045810,Technology,seed_pending_SEC_verification,unverified
+INTC,Intel Corporation,50863,Technology,seed_pending_SEC_verification,unverified
+ORCL,Oracle Corporation,1341439,Technology,seed_pending_SEC_verification,unverified
+CSCO,Cisco Systems Inc.,858877,Technology,seed_pending_SEC_verification,unverified
+JPM,JPMorgan Chase & Co.,19617,Financials,seed_pending_SEC_verification,unverified
+BAC,Bank of America Corporation,70858,Financials,seed_pending_SEC_verification,unverified
+GS,The Goldman Sachs Group Inc.,886982,Financials,seed_pending_SEC_verification,unverified
+MS,Morgan Stanley,895421,Financials,seed_pending_SEC_verification,unverified
+WFC,Wells Fargo & Company,72971,Financials,seed_pending_SEC_verification,unverified
+C,Citigroup Inc.,831001,Financials,seed_pending_SEC_verification,unverified
+WMT,Walmart Inc.,104169,Consumer,seed_pending_SEC_verification,unverified
+COST,Costco Wholesale Corporation,909832,Consumer,seed_pending_SEC_verification,unverified
+HD,The Home Depot Inc.,354950,Consumer,seed_pending_SEC_verification,unverified
+MCD,McDonald's Corporation,63908,Consumer,seed_pending_SEC_verification,unverified
+KO,The Coca-Cola Company,21344,Consumer,seed_pending_SEC_verification,unverified
+PEP,PepsiCo Inc.,77476,Consumer,seed_pending_SEC_verification,unverified
+JNJ,Johnson & Johnson,200406,Healthcare,seed_pending_SEC_verification,unverified
+PFE,Pfizer Inc.,78003,Healthcare,seed_pending_SEC_verification,unverified
+MRK,Merck & Co. Inc.,310158,Healthcare,seed_pending_SEC_verification,unverified
+ABBV,AbbVie Inc.,1551152,Healthcare,seed_pending_SEC_verification,unverified
+UNH,UnitedHealth Group Incorporated,731766,Healthcare,seed_pending_SEC_verification,unverified
+BMY,Bristol-Myers Squibb Company,14272,Healthcare,seed_pending_SEC_verification,unverified
+CAT,Caterpillar Inc.,18230,Industrials,seed_pending_SEC_verification,unverified
+DE,Deere & Company,315189,Industrials,seed_pending_SEC_verification,unverified
+HON,Honeywell International Inc.,773840,Industrials,seed_pending_SEC_verification,unverified
+UPS,United Parcel Service Inc.,1090727,Industrials,seed_pending_SEC_verification,unverified
+LMT,Lockheed Martin Corporation,936468,Industrials,seed_pending_SEC_verification,unverified
+UNP,Union Pacific Corporation,100885,Industrials,seed_pending_SEC_verification,unverified
+

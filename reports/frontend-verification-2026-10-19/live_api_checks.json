@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "counts": {
+    "all": 654,
+    "qualified": 390,
+    "matched": 260,
+    "unmatched": 130,
+    "excluded": 264
+  },
+  "estimate_pp": 0.501063715884276,
+  "timestamp_discrepancies": 487,
+  "identity_verified": 150,
+  "reviewed_disclosures": 20,
+  "report_figures_served": [
+    "continuation_vs_reversal",
+    "cumulative_abnormal_return",
+    "filing_vs_control",
+    "mean_abnormal_return",
+    "sample_coverage"
+  ]
+}

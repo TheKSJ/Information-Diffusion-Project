@@ -1,0 +1,8 @@
+{
+  "files_compared": 36,
+  "unchanged_scientific_outputs": 35,
+  "changed_files": [
+    "run_manifest.json"
+  ],
+  "reason": "Run manifest records the added desk.py and CLI serve source hashes. All numerical outputs are byte-identical."
+}

@@ -1,0 +1,40 @@
+{
+  "candidate_ledger_sha256": "3aadd1df6338f4816d62b7777aaa3482fd55361b340ae98bd127cc5443640212",
+  "configuration": {
+    "study": {
+      "bootstrap_draws": 5000,
+      "clean_timing_minimum": 20,
+      "control_sec_buffer": 5,
+      "end": "2025-12-31",
+      "estimation": [
+        -120,
+        -21
+      ],
+      "initial_threshold": 0.02,
+      "market": "SPY",
+      "min_estimation": 100,
+      "minimum_clusters": 6,
+      "observation": [
+        -5,
+        10
+      ],
+      "price_end_exclusive": "2026-03-01",
+      "price_start": "2020-06-01",
+      "primary_post": [
+        1,
+        5
+      ],
+      "robustness_thresholds": [
+        0.015,
+        0.025
+      ],
+      "seed": 20261018,
+      "start": "2021-01-01"
+    }
+  },
+  "data_kind": "SYNTHETIC \u2014 NOT REAL EMPIRICAL FINDINGS",
+  "generator": "eventstudy.demo.synthetic_inputs",
+  "network_requests": 0,
+  "seed": 20261018,
+  "source_filings": 60
+}

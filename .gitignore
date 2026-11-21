@@ -1,0 +1,26 @@
+.venv/
+.env
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+data/raw/*
+data/interim/*
+data/processed/*
+reports/live/*
+reports/demo/*
+reports/pilot/*
+reports/ui-runs/
+reports/ui-server.log
+!**/.gitkeep
+build/
+dist/
+
+# Local verification artifacts with workstation paths.
+/reports/final-check-2026-10-29/preserved-failure-*/output.log
+/reports/final-check-2026-10-29/preserved-failure-*/tests.xml
+/reports/final-check-2026-10-29/report-output.log
+/reports/final-check-2026-10-29/summary.json
+/reports/final-check-2026-10-29/tests-output.log

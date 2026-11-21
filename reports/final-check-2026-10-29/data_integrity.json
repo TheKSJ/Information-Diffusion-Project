@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "date": "2026-10-29",
+  "counts": {
+    "all": 654,
+    "in_window": 634,
+    "valid": 633,
+    "qualified": 390,
+    "matched": 260,
+    "unmatched": 130,
+    "excluded": 264
+  },
+  "estimate_pp": 0.501063715884276,
+  "source_code_mismatches": [],
+  "verified_raw_snapshots": 1165,
+  "release_clocks_verified": 0,
+  "identity_sources": 150,
+  "timing_reviews": 20,
+  "timestamp_discrepancies": 487,
+  "session_changes": 2,
+  "price_flags": 7
+}

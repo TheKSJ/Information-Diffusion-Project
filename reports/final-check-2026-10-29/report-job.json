@@ -1,0 +1,11 @@
+{
+  "id": "20261029T122731-8843f3",
+  "action": "report",
+  "title": "Refresh the research report",
+  "detail": "Regenerate tables and five figures from the saved calculations.",
+  "status": "passed",
+  "started_at": "2026-10-29T12:27:31.482003+00:00",
+  "finished_at": "2026-10-29T12:27:34.669381+00:00",
+  "exit_code": 0,
+  "tests": null
+}

@@ -4,7 +4,7 @@
 
 An event study of **633 earnings-related SEC Form 8-K (Item 2.02) filings** for 30 US large-cap stocks, 2021–2025, built as a fully reproducible Python pipeline from raw SEC EDGAR data to statistical results.
 
-![Cumulative abnormal returns around 8-K Item 2.02 filings](reports/live/figures/cumulative_abnormal_return.png)
+![Cumulative abnormal returns around 8-K Item 2.02 filings](reports/results/cumulative_abnormal_return.png)
 
 ## Key result
 
@@ -47,19 +47,63 @@ configs/          stock universe and run settings
 src/eventstudy/   collection, calendar, prices, market model, controls, inference, reporting
 tests/            test suite
 docs/             research design and source audit
-reports/live/     results table, inference output, figures
+reports/results/  saved aggregate results and figure
+reports/live/     locally generated study outputs
 ```
 
-## How to run
+## Local research desk
 
-```bash
-# TODO: replace with your actual setup and run commands
-pip install -r requirements.txt
-python -m eventstudy.pipeline
-pytest
+On Windows, double-click **Open Research Desk.cmd** after setup. The desk opens at
+`http://127.0.0.1:8765` and includes an event explorer, timing evidence, and a run center.
+See the [quick test guide](docs/QUICK_TEST.md) for the offline demo and cached reproduction.
+
+The [saved results table](reports/results/results_table.csv) and
+[inference summary](reports/results/primary_inference.json) come from the original 30-stock run.
+Run-generated outputs go to `reports/live/`. Raw source snapshots and private configuration
+stay local.
+
+## Setup — Python 3.11 or 3.12
+
+From this directory in PowerShell:
+
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.\.venv\Scripts\python.exe -m pip install --no-deps -e ".[dev]"
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+# Edit .env: SEC_USER_AGENT=InformationDiffusionStudy Your Name your.actual@email.address
+.\.venv\Scripts\python.exe -m eventstudy --help
+.\.venv\Scripts\python.exe -m eventstudy validate --config configs/study.yaml
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m eventstudy demo --offline
 ```
 
-The SEC requires a descriptive User-Agent with a contact email. Set it in `[TODO: config file or environment variable]` before running. Do not commit your email to the repository.
+Keep the configured `.env` local. The SEC requires a descriptive User-Agent with a real
+contact email. On other platforms, activate the virtual environment and use `python`.
+
+## Genuine source collection and analysis
+
+```powershell
+.\.venv\Scripts\python.exe -m eventstudy fetch --config configs/study.yaml --pilot
+.\.venv\Scripts\python.exe -m eventstudy fetch --config configs/study.yaml
+.\.venv\Scripts\python.exe -m eventstudy run --config configs/study.yaml
+.\.venv\Scripts\python.exe -m eventstudy report --config configs/study.yaml
+```
+
+Run these commands from the project directory. The full study downloads the SEC and Yahoo
+Finance source snapshots required for local reproduction.
+
+`fetch --pilot` uses AAPL/JPM/CAT, shares the immutable source cache, and writes separate
+`data/interim/pilot/` ledgers. The full fetch always requests all 30; failures do not change the
+universe. `run` uses cached sources only. `fetch --offline` replays SEC/price caches. Do not
+run multiple collectors concurrently because each process enforces its own two-requests-per-second limit.
+403 stops that SEC host for the process; 429/5xx receive bounded retries/backoff. No access
+control bypass or identity rotation. Cached files have checksum validation and are never
+silently refreshed. To research a new vendor snapshot, preserve this entire project/data
+snapshot and use a separately named data directory in a versioned configuration.
+
+Exit code 0 indicates success. Code 1 indicates invalid inputs or a missing prerequisite. Code 2 indicates source failures or an empty matched sample.
+A point estimate can exist while inference is unavailable for too few issuer clusters.
 
 ## Author
 

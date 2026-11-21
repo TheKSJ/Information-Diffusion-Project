@@ -1,0 +1,26 @@
+Step 1: Run the offline demonstration
+17:47:14 Computing screened pseudo-dates for SYN00
+17:47:22 Computing screened pseudo-dates for SYN01
+17:47:29 Computing screened pseudo-dates for SYN02
+17:47:34 Computing screened pseudo-dates for SYN03
+17:47:42 Computing screened pseudo-dates for SYN04
+17:47:50 Computing screened pseudo-dates for SYN05
+{
+  "status": "analysis_available",
+  "data_kind": "SYNTHETIC",
+  "companies_requested": 6,
+  "companies_with_prices": 6,
+  "filings_discovered": 60,
+  "candidate_events": 60,
+  "verified_events": 60,
+  "analytical_events": 60,
+  "included_large_move_events": 60,
+  "excluded_events": 0,
+  "matched_controls": 60,
+  "unmatched_events": 0,
+  "price_quality_issues": 0,
+  "failed_operations": 0,
+  "release_timing_verified": 0,
+  "verified_candidates_in_research_sessions": 60,
+  "inference_status": "estimated_few_clusters"
+}

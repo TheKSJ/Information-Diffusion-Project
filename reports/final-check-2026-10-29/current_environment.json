@@ -1,0 +1,17 @@
+{
+  "packages": {
+    "PyYAML": "6.0.2",
+    "exchange_calendars": "4.11.2",
+    "matplotlib": "3.10.3",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "pyarrow": "20.0.0",
+    "requests": "2.32.4",
+    "scipy": "1.15.3",
+    "statsmodels": "0.14.4",
+    "tzdata": "2025.2",
+    "yfinance": "0.2.66"
+  },
+  "platform": "Windows-10-10.0.26300-SP0",
+  "python": "3.11.9"
+}

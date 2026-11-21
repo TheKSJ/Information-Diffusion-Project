@@ -1,0 +1,11 @@
+{
+  "id": "20261029T122107-5bb802",
+  "action": "reproduce",
+  "title": "Reproduce the cached study",
+  "detail": "Rebuild the genuine-data study and compare every processed output hash.",
+  "status": "passed",
+  "started_at": "2026-10-29T12:21:07.213189+00:00",
+  "finished_at": "2026-10-29T12:23:35.589248+00:00",
+  "exit_code": 0,
+  "tests": null
+}

@@ -1,0 +1,18 @@
+{
+  "magnitude_gap_max_pp": 0.9504067785637462,
+  "magnitude_gap_median_pp": 0.19025990729323006,
+  "magnitude_gap_p95_pp": 0.6626172222183898,
+  "matched": 60,
+  "pairs_by_issuer": {
+    "SYN00": 10,
+    "SYN01": 10,
+    "SYN02": 10,
+    "SYN03": 10,
+    "SYN04": 10,
+    "SYN05": 10
+  },
+  "residual_volatility_gap_median_pp": 0.024348776314203017,
+  "rule": "no magnitude caliper; gaps disclosed, not relaxed or hidden",
+  "unmatched": 0,
+  "year_fallback_count": 0
+}

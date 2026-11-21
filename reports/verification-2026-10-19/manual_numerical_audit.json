@@ -1,0 +1,118 @@
+{
+  "all_pairs_checked": 260,
+  "control_reuse": 0,
+  "data_kind": "GENUINE CACHED SOURCES",
+  "hash_failures": [],
+  "max_pair_arithmetic_residual": 6.00006155870858e-13,
+  "source_snapshots_checked": 1165,
+  "worked_cases": [
+    {
+      "alpha_closed_form": 0.00042899797359064037,
+      "ar0_recomputed": -0.04942450378602095,
+      "arithmetic_residuals": {
+        "alpha": -3.596298606134418e-16,
+        "ar0": -2.0948520695895922e-14,
+        "beta": -4.32409663631006e-12,
+        "post_car": -3.079481114554028e-14,
+        "signed_post_car": 3.079481114554028e-14
+      },
+      "beta_closed_form": 1.6290818637556759,
+      "estimation_first": "2020-08-06",
+      "estimation_last": "2020-12-28",
+      "event_id": "0000320193_0000320193-21-000009",
+      "event_session": "2021-01-28",
+      "index_accepted_evidence": "000009 Filing Date 2021-01-27 Accepted 2021-01-27 16:30:35 Documents 16 Period of Report 2021-01-27 Items Item 2.02: Results of Op",
+      "n": 100,
+      "post_ar_1_5": [
+        -0.005236014497779419,
+        -0.011025682227221733,
+        -0.017127421427960983,
+        -0.009488438193472531,
+        0.0068129425437038794
+      ],
+      "post_car_recomputed": -0.036064613802730794,
+      "raw_api_timestamp": "2021-01-28T02:30:35.000Z",
+      "signed_post_car_recomputed": 0.036064613802730794,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019321000009/0000320193-21-000009-index.html",
+      "spy_return_day_zero": 0.00860006297214766,
+      "stock_adj_close_day_zero": 133.088302612305,
+      "stock_adj_close_previous": 137.913238525391,
+      "stock_adjusted_return_day_zero": -0.03498529919734783,
+      "stock_unadjusted_return_day_zero": -0.034985226707842876,
+      "ticker": "AAPL",
+      "verified_timestamp": "2021-01-27T16:30:35-05:00"
+    },
+    {
+      "alpha_closed_form": 0.0009855447259254039,
+      "ar0_recomputed": -0.012342413693731168,
+      "arithmetic_residuals": {
+        "alpha": 4.0375688903360185e-16,
+        "ar0": -3.116777669287529e-14,
+        "beta": -4.638511796883904e-13,
+        "post_car": -1.697253448895708e-14,
+        "signed_post_car": 1.697253448895708e-14
+      },
+      "beta_closed_form": 0.9001380258575361,
+      "estimation_first": "2020-07-27",
+      "estimation_last": "2020-12-15",
+      "event_id": "0000019617_0000019617-21-000071",
+      "event_session": "2021-01-15",
+      "index_accepted_evidence": "000071 Filing Date 2021-01-15 Accepted 2021-01-15 06:45:52 Documents 19 Period of Report 2021-01-15 Items Item 2.02: Results of Op",
+      "n": 100,
+      "post_ar_1_5": [
+        -0.012381172842049624,
+        -0.02843786630167152,
+        -0.010190314191172386,
+        -0.005512946018907372,
+        -0.01701785437061605
+      ],
+      "post_car_recomputed": -0.07354015372441697,
+      "raw_api_timestamp": "2021-01-15T16:45:52.000Z",
+      "signed_post_car_recomputed": 0.07354015372441697,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961721000071/0000019617-21-000071-index.html",
+      "spy_return_day_zero": -0.0072926244794619954,
+      "stock_adj_close_day_zero": 120.32341003418,
+      "stock_adj_close_previous": 122.519104003906,
+      "stock_adjusted_return_day_zero": -0.017921237570069026,
+      "stock_unadjusted_return_day_zero": -0.01792164632792026,
+      "ticker": "JPM",
+      "verified_timestamp": "2021-01-15T06:45:52-05:00"
+    },
+    {
+      "alpha_closed_form": 0.002086229893241643,
+      "ar0_recomputed": 0.004972085704950835,
+      "arithmetic_residuals": {
+        "alpha": 1.6432168126190305e-15,
+        "ar0": 8.352693536828326e-16,
+        "beta": -2.2648549702353193e-14,
+        "post_car": 5.793976409762536e-16,
+        "signed_post_car": 5.793976409762536e-16
+      },
+      "beta_closed_form": 0.7590259628919773,
+      "estimation_first": "2020-08-07",
+      "estimation_last": "2020-12-29",
+      "event_id": "0000018230_0000018230-21-000026",
+      "event_session": "2021-01-29",
+      "index_accepted_evidence": "000026 Filing Date 2021-01-29 Accepted 2021-01-29 06:30:47 Documents 19 Period of Report 2021-01-29 Items Item 2.02: Results of Op",
+      "n": 100,
+      "post_ar_1_5": [
+        -0.004438412334052339,
+        0.029298854852859713,
+        -0.008137818384792049,
+        -0.009668231941629048,
+        0.001970177052534304
+      ],
+      "post_car_recomputed": 0.00902456924492058,
+      "raw_api_timestamp": "2021-01-29T16:30:47.000Z",
+      "signed_post_car_recomputed": 0.00902456924492058,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/18230/000001823021000026/0000018230-21-000026-index.html",
+      "spy_return_day_zero": -0.02001966063204652,
+      "stock_adj_close_day_zero": 166.126770019531,
+      "stock_adj_close_previous": 167.489654541016,
+      "stock_adjusted_return_day_zero": -0.008137126589817245,
+      "stock_unadjusted_return_day_zero": -0.008137138059016391,
+      "ticker": "CAT",
+      "verified_timestamp": "2021-01-29T06:30:47-05:00"
+    }
+  ]
+}

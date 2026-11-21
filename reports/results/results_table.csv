@@ -1,0 +1,7 @@
+specification,classification,n_pairs,n_issuers,n_calendar_quarters,estimate_pp,ci95_low_pp,ci95_high_pp,p_one_sided,p_two_sided,inference_status
+primary,primary,260,30,20,0.501063715884,0.1357093798,0.866418051969,0.00444572523689,0.00889145047377,estimated
+threshold_0.015,prespecified exploratory sensitivity,351,30,20,0.462927043135,0.11395434221,0.81189974406,0.0055485288759,0.0110970577518,estimated
+threshold_0.025,prespecified exploratory sensitivity,176,28,20,0.544079380439,-0.0667423407609,1.15490110164,0.0393383124368,0.0786766248736,estimated_few_clusters
+nonoverlap_no_other_economic_items,prespecified exploratory sensitivity,162,23,20,0.692238193732,0.166354734441,1.21812165302,0.00611404675031,0.0122280935006,estimated_few_clusters
+independently_verified_first_release_same_session,prespecified exploratory sensitivity,0,0,0,,,,,,unavailable_insufficient_independent_release_timing_evidence
+simple_market_adjusted,prespecified exploratory sensitivity,281,30,20,0.659920695996,0.0922200169135,1.22762137508,0.0121220512196,0.0242441024392,estimated

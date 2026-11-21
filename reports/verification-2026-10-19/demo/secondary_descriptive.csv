@@ -1,0 +1,5 @@
+dimension,group,n,issuers,mean_ar0_percent,mean_pre_car_percent,mean_post_car_percent,mean_signed_post_car_percent,mean_post10_car_percent,classification
+initial_sign,-1,30,6,-3.4943289186,-0.454417829793,-1.26937123509,1.26937123509,-1.45987734729,descriptive; no confirmatory secondary p-values
+initial_sign,1,30,6,3.55341095698,0.246153945219,1.18764913725,1.18764913725,1.43973381787,descriptive; no confirmatory secondary p-values
+timing_class,before_open,60,6,0.0295410191898,-0.104131942287,-0.0408610489185,1.22851018617,-0.0100717647098,descriptive; no confirmatory secondary p-values
+sector,Synthetic,60,6,0.0295410191898,-0.104131942287,-0.0408610489185,1.22851018617,-0.0100717647098,descriptive; no confirmatory secondary p-values

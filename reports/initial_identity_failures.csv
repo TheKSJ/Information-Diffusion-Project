@@ -1,0 +1,6 @@
+ticker,year,current_mapping_verified,historical_cover_verified,evidence_url,error,cover_symbols,source_sha256,cover_ciks
+C,2021,True,False,https://www.sec.gov/Archives/edgar/data/831001/000083100121000042/c-20201231.htm,annual_cover_symbol_CIK_not_corroborated,,f332ad8845ac6085cceed93aaa3f425aca5d30a545558620dffaf8fd506333ad,831001
+C,2022,True,False,https://www.sec.gov/Archives/edgar/data/831001/000083100122000036/c-20211231.htm,annual_cover_symbol_CIK_not_corroborated,,3167feed7d5759dc69e0c5d232b4de08818c8950124de0ed1a33127345a65785,831001
+C,2023,True,False,https://www.sec.gov/Archives/edgar/data/831001/000083100123000037/c-20221231.htm,annual_cover_symbol_CIK_not_corroborated,,1fcb82d9b9b9352906dbbcc9689e85c6c2f0d000eca1fdc98c7427d6cc42a25b,831001
+C,2024,True,False,https://www.sec.gov/Archives/edgar/data/831001/000083100124000033/c-20231231.htm,annual_cover_symbol_CIK_not_corroborated,,227be4b1ed6798dc1bf8d3d597af03d439e61c6ec653bd7b7098947317ec5231,831001
+C,2025,True,False,https://www.sec.gov/Archives/edgar/data/831001/000083100125000067/c-20241231.htm,annual_cover_symbol_CIK_not_corroborated,,de309c73400672f033ad41645e7f1c15dcf07e7b3e306ba2b1a77480de78c9db,831001

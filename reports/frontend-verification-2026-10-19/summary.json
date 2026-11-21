@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-19",
+  "status": "passed",
+  "tests": {
+    "tests": 89,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "static_check": "passed",
+  "javascript_syntax": "passed",
+  "dependency_check": "passed",
+  "ui_jobs": [
+    {
+      "id": "20261019T045355-b0b5ca",
+      "action": "tests",
+      "title": "Verify installation and tests",
+      "detail": "Validate the fixed design and run the automated test suite.",
+      "status": "passed",
+      "started_at": "2026-10-19T04:53:55.666067+00:00",
+      "finished_at": "2026-10-19T04:54:22.352689+00:00",
+      "exit_code": 0,
+      "tests": {
+        "tests": 89,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "20261019T045443-97c5c7",
+      "action": "demo",
+      "title": "Run the offline demonstration",
+      "detail": "Run an isolated end-to-end study using labelled synthetic fixtures.",
+      "status": "passed",
+      "started_at": "2026-10-19T04:54:43.568688+00:00",
+      "finished_at": "2026-10-19T04:56:27.240455+00:00",
+      "exit_code": 0,
+      "tests": null
+    },
+    {
+      "id": "20261019T045643-746b07",
+      "action": "report",
+      "title": "Refresh the research report",
+      "detail": "Regenerate tables and five figures from the saved calculations.",
+      "status": "passed",
+      "started_at": "2026-10-19T04:56:43.834143+00:00",
+      "finished_at": "2026-10-19T04:56:47.052279+00:00",
+      "exit_code": 0,
+      "tests": null
+    },
+    {
+      "id": "20261019T045727-1de12e",
+      "action": "reproduce",
+      "title": "Reproduce the cached study",
+      "detail": "Rebuild the genuine-data study and compare every processed output hash.",
+      "status": "passed",
+      "started_at": "2026-10-19T04:57:27.767582+00:00",
+      "finished_at": "2026-10-19T05:00:52.361647+00:00",
+      "exit_code": 0,
+      "tests": null
+    }
+  ],
+  "cached_reproduction": {
+    "differences": {},
+    "files_compared": 36,
+    "identical": true,
+    "run_summary": {
+      "analytical_events": 633,
+      "candidate_events": 654,
+      "companies_requested": 30,
+      "companies_with_prices": 30,
+      "data_kind": "LIVE",
+      "excluded_events": 264,
+      "failed_operations": 0,
+      "filings_discovered": 302816,
+      "included_large_move_events": 390,
+      "inference_status": "estimated",
+      "matched_controls": 260,
+      "price_quality_issues": 7,
+      "release_timing_verified": 0,
+      "status": "analysis_available",
+      "unmatched_events": 130,
+      "verified_candidates_in_research_sessions": 634,
+      "verified_events": 654
+    }
+  },
+  "numerical_preservation": {
+    "files_compared": 36,
+    "unchanged_scientific_outputs": 35,
+    "changed_files": [
+      "run_manifest.json"
+    ],
+    "reason": "Run manifest records the added desk.py and CLI serve source hashes. All numerical outputs are byte-identical."
+  },
+  "packaging": {
+    "wheel": "information_diffusion_event_study-0.1.0-py3-none-any.whl",
+    "sha256": "d1f7036d2390bdd2686842854fa34cbe7981d7d720996b28bcab7d817f6c12bf",
+    "bundled_assets_match_source": {
+      "app.js": true,
+      "index.html": true,
+      "mark.svg": true,
+      "style.css": true
+    },
+    "build": "passed with isolated pinned build requirements",
+    "initial_nonisolated_build": "Failed because local bdist_wheel was unavailable; isolated build succeeded without changing runtime packages."
+  },
+  "browser_checks": [
+    "All four navigation views loaded from genuine study data",
+    "AAPL search returned 10 qualifying events and correct pair arithmetic",
+    "Empty search cleared ledger and inspector",
+    "Excluded filter returned 264 records; outside-window missing AR displayed as unavailable",
+    "COST session-changing timestamp evidence and 20 disclosure review issuers displayed correctly",
+    "Methodology and report dialogs rendered, including five report image references",
+    "AAR/CAAR toggle changed chart, subtitle and legend together",
+    "All four background tasks passed through browser controls",
+    "Single active task disabled other task controls",
+    "Browser console reported no errors during checks"
+  ],
+  "source_hashes": {
+    "src/eventstudy/desk.py": "6f8794e96f5acc8884df38860fb9dcffe93f9f27aa77f26e5ebf35896b8b58c6",
+    "src/eventstudy/cli.py": "9fb7daa5730e8e78d4efd12854b875698629658062e29dba777e0c7be15b2189",
+    "src/eventstudy/web/app.js": "5f5e3997a763cffea8c855e646839eb79e4f0455070cff477a6959bc5a21ca7b",
+    "src/eventstudy/web/index.html": "e04527960deab6a5ae32944cbf8cd231eaf2d41e140455d590e2be3a7e4a794b",
+    "src/eventstudy/web/mark.svg": "20448986fc6ec1490bc9406236d1a7cfbef3dea5b02d91df31f153f3e320dcfd",
+    "src/eventstudy/web/style.css": "f7e445f87552de4541974cecc4da20274219bf922cec76a7565051fb4f21d576",
+    "tests/test_desk.py": "965591498b3b8f638ca91b9c5c822d018e325ee37fab566c21212aff8d498725"
+  }
+}

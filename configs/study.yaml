@@ -1,0 +1,32 @@
+study:
+  title: "Information Diffusion in US Equity Markets: Filing-timed Reactions, 2021–2025"
+  start: "2021-01-01"
+  end: "2025-12-31"
+  price_start: "2020-06-01"
+  price_end_exclusive: "2026-03-01"
+  market: SPY
+  calendar: XNYS
+  timezone: America/New_York
+  estimation: [-120, -21]
+  observation: [-5, 10]
+  primary_post: [1, 5]
+  min_estimation: 100
+  initial_threshold: 0.02
+  robustness_thresholds: [0.015, 0.025]
+  seed: 20261018
+  bootstrap_draws: 5000
+  minimum_clusters: 6
+  control_sec_buffer: 5
+  audit_size: 20
+  clean_timing_minimum: 20
+sec:
+  requests_per_second: 2.0
+  timeout: 30
+  retries: 3
+  backoff_seconds: 2
+paths:
+  universe: configs/universe.csv
+  timing_review: configs/timing_review.csv
+  data: data
+  reports: reports/live
+

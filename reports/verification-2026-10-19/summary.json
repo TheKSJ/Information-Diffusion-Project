@@ -1,0 +1,46 @@
+{
+  "verification_date": "2026-10-19",
+  "status": "passed",
+  "tests": {
+    "tests": 68,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "dependency_check": "passed",
+  "static_check": "passed",
+  "cli_help_and_validation": "passed",
+  "report_generation": "passed",
+  "offline_demo_matched_pairs": 60,
+  "cached_pilot_verified_events": 64,
+  "cached_real_run": {
+    "differences": {},
+    "files_compared": 36,
+    "identical": true,
+    "run_summary": {
+      "analytical_events": 633,
+      "candidate_events": 654,
+      "companies_requested": 30,
+      "companies_with_prices": 30,
+      "data_kind": "LIVE",
+      "excluded_events": 264,
+      "failed_operations": 0,
+      "filings_discovered": 302816,
+      "included_large_move_events": 390,
+      "inference_status": "estimated",
+      "matched_controls": 260,
+      "price_quality_issues": 7,
+      "release_timing_verified": 0,
+      "status": "analysis_available",
+      "unmatched_events": 130,
+      "verified_candidates_in_research_sessions": 634,
+      "verified_events": 654
+    }
+  },
+  "numerical_pairs_checked": 260,
+  "source_hashes_checked": 1165,
+  "source_hash_failures": 0,
+  "code_changes_required": false,
+  "fresh_network_downloads_tested": false,
+  "upstream_deprecation_warnings": 14
+}

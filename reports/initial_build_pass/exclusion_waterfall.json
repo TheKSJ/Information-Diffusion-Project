@@ -1,0 +1,11 @@
+{
+  "candidate_total": 654,
+  "mutually_exclusive": {
+    "below_initial_threshold": 234,
+    "duplicate_ticker_session": 1,
+    "historical_identity_unverified": 19,
+    "included_primary": 380,
+    "outside_research_sessions": 20
+  },
+  "qualifying_unmatched": 122
+}

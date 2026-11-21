@@ -1,0 +1,46 @@
+{
+  "data_kind": "genuine cached sources",
+  "estimate_pp": 0.45790680315423654,
+  "hypothesis": "H0: mean event-minus-control signed post CAR <= 0; H1: > 0",
+  "issuer_bootstrap": {
+    "ci95_pp": [
+      0.11861633704859718,
+      0.7852210910131675
+    ],
+    "draws": 5000,
+    "method": "pairs cluster bootstrap, all observations of sampled issuers",
+    "seed": 20261018,
+    "status": "diagnostic_percentile_CI"
+  },
+  "issuer_cluster": {
+    "ci95_pp": [
+      0.10051983900072185,
+      0.8152937673077513
+    ],
+    "clusters": 29,
+    "df": 28,
+    "p_one_sided": 0.006947162059764413,
+    "p_two_sided": 0.013894324119528826,
+    "se_pp": 0.17447066887313098,
+    "status": "estimated_few_clusters",
+    "t_stat": 2.624548906195863
+  },
+  "n_calendar_quarters": 20,
+  "n_issuers": 29,
+  "n_pairs": 258,
+  "quarter_cluster_sensitivity": {
+    "ci95_pp": [
+      -0.021769961743279068,
+      0.9375835680517521
+    ],
+    "clusters": 20,
+    "df": 19,
+    "method": "centered event/control legs at own calendar quarter",
+    "p_one_sided": 0.030115840727022784,
+    "p_two_sided": 0.06023168145404557,
+    "se_pp": 0.22917881134105225,
+    "status": "estimated_few_clusters",
+    "t_stat": 1.9980328917615464
+  },
+  "reliability_note": "At most 30 deliberately selected issuers; small-cluster t and bootstrap approximations may be fragile. Quarter check is a sensitivity. No causal, first-release, intraday-speed or profitability interpretation."
+}

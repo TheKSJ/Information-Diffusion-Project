@@ -1,0 +1,12 @@
+{
+  "wheel": "information_diffusion_event_study-0.1.0-py3-none-any.whl",
+  "sha256": "d1f7036d2390bdd2686842854fa34cbe7981d7d720996b28bcab7d817f6c12bf",
+  "bundled_assets_match_source": {
+    "app.js": true,
+    "index.html": true,
+    "mark.svg": true,
+    "style.css": true
+  },
+  "build": "passed with isolated pinned build requirements",
+  "initial_nonisolated_build": "Failed because local bdist_wheel was unavailable; isolated build succeeded without changing runtime packages."
+}

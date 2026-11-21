@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "rejected_posts": 50,
+  "expected_status": 403,
+  "connection_resets": 0
+}

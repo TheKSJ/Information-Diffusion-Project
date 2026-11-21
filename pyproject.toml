@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "information-diffusion-event-study"
+version = "0.1.0"
+description = "Auditable filing-timed US equity event study with matched large-move controls"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "numpy==2.2.6", "pandas==2.2.3", "scipy==1.15.3",
+  "statsmodels==0.14.4", "requests==2.32.4", "yfinance==0.2.66",
+  "exchange_calendars==4.11.2", "pyarrow==20.0.0", "matplotlib==3.10.3",
+  "PyYAML==6.0.2", "tzdata==2025.2"
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.1", "pytest-cov==6.2.1", "ruff==0.12.2"]
+
+[project.scripts]
+eventstudy = "eventstudy.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+eventstudy = ["web/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+

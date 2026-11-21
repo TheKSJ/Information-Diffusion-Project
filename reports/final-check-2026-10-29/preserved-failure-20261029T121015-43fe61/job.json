@@ -1,0 +1,16 @@
+{
+  "id": "20261029T121015-43fe61",
+  "action": "tests",
+  "title": "Verify installation and tests",
+  "detail": "Validate the fixed design and run the automated test suite.",
+  "status": "failed",
+  "started_at": "2026-10-29T12:10:15.119759+00:00",
+  "finished_at": "2026-10-29T12:11:17.829254+00:00",
+  "exit_code": 1,
+  "tests": {
+    "tests": 103,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  }
+}

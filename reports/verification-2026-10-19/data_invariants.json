@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "analytical_events_checked": 633,
+  "qualifying_events_checked": 390,
+  "matched_pairs_checked": 260,
+  "estimation_observations_per_event": 100,
+  "offsets_per_event": 16,
+  "duplicate_control_reuse": 0,
+  "independent_statsmodels_cluster_se_pp": 0.17863731708066619,
+  "saved_cluster_se_pp": 0.17863731708076225,
+  "notes": "Independent checks of actual datasets; no data or specification changes."
+}
